@@ -1,0 +1,53 @@
+.header {
+    height: rem(37.8);
+    padding: rem(5.5) rem(9) rem(5.5) rem(15.57);
+    background-color: #fff;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .r {
+        display: flex;
+        align-items: center;
+        a {
+            margin-left: rem(18);
+        }
+    }
+    .logo {
+        img {
+            width: rem(52.9);
+            margin-top: rem(1);
+        }
+    }
+    .search {
+        svg {
+            fill: #aaa;
+            margin-top: rem(2);
+            width: rem(18);
+            height: rem(18);
+        }
+    }
+    .userPic {
+        width: rem(20.48);
+        height: rem(20.48);
+        img {
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .downloadApp {
+        font-size: rem(11);
+        width: rem(68.4266);
+        height: rem(20.4266);
+        line-height: rem(20.4266);
+        color: #fff;
+        background-color: #fb7299;
+        border-radius: 6px;
+        text-align: center;
+    }
+}

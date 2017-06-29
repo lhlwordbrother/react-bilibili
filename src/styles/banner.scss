@@ -1,0 +1,17 @@
+.banner {
+    padding-top: rem(3.75467*20);
+    height: rem(4.69333*20);
+    box-sizing: content-box;
+    transition: transform .7s ease;
+    a {
+        display: block;
+        float: left;
+    }
+    img {
+        width: 100%;
+    }
+    img,
+    a {
+        height: 100%;
+    }
+}
