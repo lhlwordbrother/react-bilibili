@@ -1,5 +1,5 @@
 {
-    "name": "bilibili",
+    "name": "react-bilibili",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
