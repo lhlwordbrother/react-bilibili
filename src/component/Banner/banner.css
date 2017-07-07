@@ -1,0 +1,13 @@
+.banner {
+  padding-top: 2.34667rem;
+  height: 2.93333rem;
+  box-sizing: content-box;
+  transition: transform .7s ease; }
+  .banner a {
+    display: block;
+    float: left; }
+  .banner img {
+    width: 100%; }
+  .banner img,
+  .banner a {
+    height: 100%; }

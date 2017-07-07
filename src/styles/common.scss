@@ -2,30 +2,3 @@ $picWidth:320;
 @function rem($px) {
     @return $px/$picWidth*10rem;
 }
-
-* {
-    box-sizing: border-box;
-    font-family: 'microsoft yahei';
-}
-
-body {
-    -webkit-tap-highlight-color: transparent;
-}
-
-a,
-a:hover {
-    text-decoration: none;
-}
-
-body,
-html {
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-body,
-html,
-#root,
-.warp {
-    width: 100%;
-}

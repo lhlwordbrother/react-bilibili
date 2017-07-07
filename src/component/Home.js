@@ -1,22 +1,29 @@
 import React,{Component} from 'react';
 import axios from 'axios';
 import fetchJsonp from 'fetch-jsonp';
-import Nav from './Nav';
-import Banner from './Banner';
+import {Link} from 'react-router-dom';
+
+import Head from './Head/Head';
+import Nav from './Nav/Nav';
+import Banner from './Banner/Banner';
+
 class Home extends Component{
     constructor(props) {
         super(props);
         this.state = {
             AllHot:[],
-            banner:[]
+            banner:[],
+            IndexData:{}
         };
     }
     componentWillMount (){
         this.getBannerData();
         this.getAllHot();
+        this.getIndexData();
     }
+    //获取Banner数据
     getBannerData(){
-        fetchJsonp('http://api.bilibili.com/x/web-show/res/loc?jsonp=jsonp&pf=7&id=1695')
+        fetchJsonp('https://api.bilibili.com/x/web-show/res/loc?jsonp=jsonp&pf=7&id=1695')
         .then( (response) => {
             return response.json()
         }).then( (json) => {
@@ -26,6 +33,7 @@ class Home extends Component{
             console.log('parsing failed', ex)
         })
     }
+    //获取热门数据
     getAllHot(){
         axios.get('/index/ranking-3day.json')
         .then( (response) => {
@@ -42,6 +50,17 @@ class Home extends Component{
             console.log('parsing failed', ex)
         })
     }
+    //获取首页数据
+    getIndexData(){
+      fetchJsonp('http://api.bilibili.com/x/web-interface/dynamic/index?jsonp=jsonp')
+      .then( (response) => {
+          return response.json()
+      }).then( (json) => {
+          this.setState({IndexData:json.data});
+      }).catch( (ex) => {
+          console.log('parsing failed', ex)
+      })
+    }
     MoreThanThousand(val){
         if( Number(val) >= 10000){
             return (val/10000).toFixed(1)+'万';
@@ -52,23 +71,7 @@ class Home extends Component{
     render() {
         return(
             <div className="warp">
-                <header className="header">
-                    <a className="logo l" href="/">
-                        <img src="//s1.hdslb.com/bfs/static/mult/images/logo.png" alt=""/>
-                    </a>
-                    <div className="r">
-                        <a href="/search" className="search">
-                            <svg>
-                                <use xmlnsXlink="http://www.w3.org/1999/xlink" xlinkHref="#icon-sousuo">
-                                </use>
-                            </svg>
-                    </a>
-                        <a className="userPic" href="/user">
-                            <img src="http://i1.hdslb.com/bfs/face/9c52da8de07005c15f7c401bf62ca5a6afc51f41.jpg" alt=""/>
-                        </a>
-                        <a href="/#" className="downloadApp">下载客户端</a>
-                    </div>
-                </header>
+                <Head/>
                 <Nav/>
                 <Banner banner={this.state.banner} ImgWidth={'100'} unit={'%'} />
                 <dl className="listDiv">
@@ -80,7 +83,7 @@ class Home extends Component{
                             </svg>
                             <span>热门推荐</span>
                         </p>
-                        <a className="more" href="/list">
+                        <Link className="more" to="/list">
                             <svg className="topIcon">
                                 <use xmlnsXlink="http://www.w3.org/1999/xlink" xlinkHref="#icon-paihangbang1" ></use>
                             </svg>
@@ -89,13 +92,13 @@ class Home extends Component{
                                 <use xmlnsXlink="http://www.w3.org/1999/xlink" xlinkHref="#icon-gengduo">
                                 </use>
                             </svg>
-                        </a>
+                        </Link>
                     </dt>
                     <dd>
                         {
                             this.state.AllHot.map( (v,i)=>{
                                 return(
-                                    <a key={i} href={'/video/av'+v.aid}>
+                                    <Link key={i} to={'/video/av'+v.aid}>
                                         <div className="pic">
                                             <img src={v.pic} alt=""/>
                                             <div className="fixed">
@@ -113,7 +116,7 @@ class Home extends Component{
                                             </div>
                                         </div>
                                         <p className="title">{v.title}</p>
-                                    </a>
+                                    </Link>
                                 );
                             })
                         }

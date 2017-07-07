@@ -1,4 +1,6 @@
 import React,{Component} from 'react';
+import {Link} from 'react-router-dom'
+import './nav.css';
 class Nav extends Component{
     constructor(props){
         super(props);
@@ -24,7 +26,7 @@ class Nav extends Component{
             ]
         }
     }
-    
+
     fill (){
         let j = 6 - this.state.navData.length % 6;
         let arr = [];
@@ -45,12 +47,12 @@ class Nav extends Component{
                     {
                         this.state.navData.map((v,i)=>{
                             return (
-                                <a  className={v.cls||''} 
-                                    href={v.href} 
-                                    key={i} 
+                                <Link  className={v.cls||''}
+                                    to={v.href}
+                                    key={i}
                                 >
                                     <p>{v.title}</p>
-                                </a>
+                                </Link>
                             );
                         })
                     }

@@ -1,0 +1,91 @@
+.navAll {
+  background-color: #fff;
+  position: fixed;
+  z-index: 2;
+  top: 1.17333rem;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  max-height: 1.17333rem;
+  padding-right: .8rem; }
+  .navAll.up {
+    animation: up .4s ease forwards; }
+    .navAll.up .popUp {
+      visibility: visible; }
+  .navAll.down {
+    animation: down .4s ease forwards; }
+    .navAll.down .popUp {
+      visibility: hidden; }
+
+.nav {
+  display: flex;
+  font-size: 0.37333rem;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 0 0.1875rem; }
+  .nav a {
+    display: block;
+    padding-top: 0.16rem;
+    padding-bottom: 0.16rem;
+    margin-left: 0.37333rem;
+    margin-right: 0.37333rem;
+    background-color: #fff;
+    line-height: 0.8rem;
+    text-align: center;
+    width: 0.85333rem;
+    color: #757575; }
+    .nav a p {
+      border-bottom: 0.05333rem solid transparent; }
+    .nav a.bigTitle {
+      margin: 0 0.18667rem;
+      width: 1.22667rem; }
+    .nav a.active {
+      color: #fb7299; }
+      .nav a.active p {
+        border-color: #fb7299; }
+
+.popDown {
+  margin: auto;
+  margin-bottom: 0.17333rem;
+  margin-top: -0.06667rem;
+  width: 2.4rem;
+  height: 0.57333rem; }
+
+.popUp svg,
+.popDown svg {
+  width: 0.42667rem;
+  height: 0.57333rem;
+  display: block;
+  margin: 0 auto;
+  fill: #aaa; }
+
+.popUp {
+  position: absolute;
+  width: 0.86667rem;
+  height: 1.17333rem;
+  right: 0.24rem;
+  top: 0; }
+  .popUp svg {
+    height: 1.17333rem; }
+
+@keyframes down {
+  0% {
+    padding-right: .8rem;
+    max-height: 1.17333rem; }
+  10% {
+    padding-right: 0rem; }
+  100% {
+    max-height: 10rem;
+    padding-right: 0rem; } }
+
+@keyframes up {
+  0% {
+    padding-right: 0rem;
+    max-height: 10rem; }
+  10% {
+    padding-right: .8rem; }
+  100% {
+    max-height: 1.17333rem;
+    padding-right: .8rem; } }
